@@ -1,0 +1,32 @@
+import random
+
+options=['rock','paper','scissor']
+
+computer_point=0
+my_point=0
+turn=0
+
+while turn<=10:
+    my_turn=(input('Pick a choice: ')).lower()
+    computer_turn=random.randint(0,2)
+    
+    if my_turn=='q':
+        break
+    if my_turn=='rock'and options[computer_turn]=='scissor':
+        print('I win')
+        my_point+=1
+    elif my_turn=='paper'and options[computer_turn]=='rock':
+        print('I win')
+        my_point+=1
+    elif my_turn=='scissor'and options[computer_turn]=='paper':
+        print('I win')
+        my_point+=1
+    elif (my_turn=='rock'and options[computer_turn]=='rock') or (my_turn=='scissor'and options[computer_turn]=='scissor') or (my_turn=='paper'and options[computer_turn]=='paper'):
+        print('Draw')
+    else:
+        print('Try again')
+        computer_point+=1
+print('Your point: ',my_point)
+print('Computer's point: ',computer_point)
+print('Well played')
+    
