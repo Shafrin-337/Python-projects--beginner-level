@@ -1,0 +1,59 @@
+def printBoard(gameBoard):
+    print(f'{gameBoard[0]}  |{gameBoard[1]}  |{gameBoard[2]}  ')
+    print('-----------')
+    print(f'{gameBoard[3]}  |{gameBoard[4]}  |{gameBoard[5]} ')
+    print('-----------')
+    print(f'{gameBoard[6]}  |{gameBoard[7]}  |{gameBoard[8]}  ')
+    
+def checkResult(position):
+    flag=0
+    position.sort()
+    if (0 in position and 1 in position and 2 in position) or (3 in position and 4 in position and 5 in position) or (6 in position and 7 in position and 8 in position) or (0 in position and 3 in position and 6 in position) or (1 in position and 4 in position and 7 in position) or (2 in position and 5 in position and 8 in position) or (2 in position and 4 in position and 6 in position) or (0 in position and 4 in position and 8 in position):
+    #if [0,1,2] in position or position==[3,4,5] or position==[6,7,8] or position==[0,3,6] or position==[1,4,7] or position==[2,5,8] or position==[0,4,8] or position==[2,4,6]:    
+        flag+=1
+    return flag
+
+
+   
+    
+    
+p1=input('Select your sign: ')
+
+if p1=='o':
+    p2='x'
+    print(f'Player 1: {p1} and Plater 2: {p2}')
+else:
+    p2='o'
+    print(f'Player 1: {p1} and Player 2: {p2}')
+    
+    
+gameBoard=[1,2,3,4,5,6,7,8,9]
+position1=[]
+position2=[]
+turn=0
+
+while True:
+    a=(int(input('Player 1: Enter your position: ')))-1
+    position1.append(a)
+    gameBoard[a]=p1
+    printBoard(gameBoard)
+    flag=checkResult(position1)
+    if flag==1:
+        print('Player 1 won')
+        break
+    if turn==8:
+        print('Draw')
+        break
+    b=(int(input('Player 2: Enter your position: ')))-1                
+    position2.append(b)
+    gameBoard[b]=p2
+    printBoard(gameBoard)
+    flag=checkResult(position2)
+    if flag==1:
+        print('Player 2 won')
+        break
+    turn+=2
+    
+    
+
+  
